@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>hrstn</title>
+<meta name="description" content="hrstn — red teamer & offensive security engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#09080a; --ink:#d8cfc9; --muted:#8a807c;
+  --blood:#9a1b1b; --blood-bright:#c0392b; --brass:#b08d57; --line:#231c1f;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+html{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);scroll-behavior:smooth;}
+body{
+  background:
+    radial-gradient(900px 520px at 50% -6%, rgba(154,27,27,0.17), transparent 60%),
+    radial-gradient(1400px 900px at 50% 120%, rgba(0,0,0,0.9), transparent 55%),
+    var(--bg);
+  color:var(--ink); font-family:'Cormorant Garamond', Georgia, serif;
+  font-size:19px; line-height:1.55; min-height:100vh; -webkit-font-smoothing:antialiased; position:relative;
+}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;box-shadow:inset 0 0 220px 40px rgba(0,0,0,0.85);z-index:2;}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px 80px;position:relative;z-index:3;}
+.emblem{display:flex;justify-content:center;padding:52px 0 4px;}
+.emblem img{width:min(430px,90%);height:auto;filter:drop-shadow(0 0 30px rgba(154,27,27,0.3));}
+header{text-align:center;margin-bottom:30px;}
+.handle{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.5em;text-transform:uppercase;color:var(--brass);margin:0 0 14px;}
+.handle .cursor{color:var(--blood-bright);animation:blink 1.15s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+h1{font-weight:600;font-size:38px;letter-spacing:0.02em;margin:0 0 6px;color:#efe7e1;line-height:1.1;}
+.tag{font-style:italic;color:var(--muted);font-size:20px;margin:0 auto;max-width:40ch;}
+.highlights{text-align:center;margin:2px 0 4px;}
+.highlights .hl{font-size:18px;color:var(--ink);line-height:1.5;margin:3px 0;}
+.highlights .hl .n{font-family:'JetBrains Mono',monospace;color:var(--blood-bright);font-size:16px;font-weight:500;margin-right:2px;}
+.highlights .hl .win{color:var(--brass);font-weight:500;}
+.rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:36px 0 26px;}
+.rule::before,.rule::after{content:"";height:1px;flex:1;max-width:150px;background:linear-gradient(90deg,transparent,var(--line),transparent);}
+.rule span{color:var(--blood);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.3em;}
+section{margin-bottom:32px;}
+h2{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;font-weight:500;}
+h2 .mk{color:var(--blood-bright);margin-right:7px;}
+.do{display:flex;flex-wrap:wrap;gap:9px;}
+.do .d{display:inline-block;border:1px solid var(--line);border-left:2px solid rgba(154,27,27,0.55);background:rgba(255,255,255,0.012);padding:4px 12px;border-radius:2px;font-size:16px;letter-spacing:0.02em;}
+.certs{display:flex;flex-wrap:wrap;gap:9px;}
+.cert{font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.1em;color:#efe7e1;border:1px solid var(--line);border-top:1.6px solid rgba(154,27,27,0.6);background:rgba(255,255,255,0.02);padding:8px 15px;border-radius:2px;}
+.cert a{color:inherit;text-decoration:none;}
+.cert a:hover{color:#fff;}
+.links{display:flex;flex-wrap:wrap;gap:10px 24px;}
+.links a{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.06em;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;transition:color .15s,border-color .15s;}
+.links a .arw{color:var(--blood);margin-right:6px;}
+.links a:hover{color:#fff;border-color:var(--blood-bright);}
+.item{padding:13px 0;border-top:1px solid var(--line);}
+.item:first-child{border-top:0;}
+.item .t{font-size:21px;color:#e9e0da;font-weight:500;}
+.item .t a{color:#e9e0da;text-decoration:none;border-bottom:1px solid rgba(176,141,87,0.4);}
+.item .t a:hover{color:#fff;border-color:var(--brass);}
+.item .y{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blood);letter-spacing:0.1em;margin-left:6px;}
+.item .d{font-size:17px;color:var(--muted);line-height:1.5;}
+.item .d a{color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(176,141,87,0.35);}
+.clock{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 10px;}
+.clock li{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--ink);border:1px solid var(--line);border-left:2px solid rgba(154,27,27,0.5);background:rgba(255,255,255,0.012);padding:5px 13px;border-radius:2px;}
+footer{margin-top:50px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#4e4648;}
+@media (max-width:520px){body{font-size:18px;}h1{font-size:30px;}.wrap{padding:0 20px 64px;}.emblem{padding:40px 0 2px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="emblem"><img src="snake.png" alt=""></div>
+
+  <header>
+    <div class="handle">hrstn<span class="cursor">_</span></div>
+    <h1>Red Teamer &amp; Offensive Security Engineer</h1>
+    <p class="tag">Builds C2 tooling, pokes at AI systems. Based in Austria.</p>
+  </header>
+
+  <div class="highlights">
+    <div class="hl"><span class="n">5&times;</span> Austrian Cyber Security Challenge finalist</div>
+    <div class="hl">OffSec UGC lab author &middot; builds his own C2 &amp; red-team tooling</div>
+  </div>
+
+  <div class="rule"><span>&#10022;</span></div>
+
+  <section>
+    <h2><span class="mk">//</span>What I do</h2>
+    <div class="do">
+      <span class="d">Windows &amp; Active Directory</span>
+      <span class="d">Red teaming &amp; adversary simulation</span>
+      <span class="d">C2 &amp; tooling development</span>
+      <span class="d">Low-level Windows internals</span>
+      <span class="d">AI / LLM security</span>
+      <span class="d">Social engineering</span>
+      <span class="d">Workshops &amp; training</span>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="mk">//</span>Certs</h2>
+    <div class="certs">
+      <span class="cert"><a href="https://credentials.offsec.com/04a2121f-de53-4460-a11a-50a0208ea66e">OSAI</a></span>
+      <span class="cert">OSEP</span>
+      <span class="cert">OSCP</span>
+      <span class="cert">CRTO</span>
+      <span class="cert">CRTL</span>
+      <span class="cert">COAE</span>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="mk">//</span>Elsewhere</h2>
+    <div class="links">
+      <a href="https://github.com/hrstn"><span class="arw">&rsaquo;</span>GitHub</a>
+      <a href="https://www.linkedin.com/in/marcel-stering-8505ab240/"><span class="arw">&rsaquo;</span>LinkedIn</a>
+      <a href="https://www.credential.net/profile/marcelstering22827"><span class="arw">&rsaquo;</span>Credly</a>
+    </div>
+  </section>
+
+  <div class="rule"><span>&#10022;</span></div>
+
+  <section>
+    <h2><span class="mk">//</span>Research &amp; Work</h2>
+
+    <div class="item">
+      <div class="t">OffSec UGC Lab</div>
+      <div class="d">Original lab concept accepted into OffSec's User-Generated Content program &mdash; built and hosted on Proving Grounds.</div>
+    </div>
+
+    <div class="item">
+      <div class="t">Jellyfin &mdash; Responsible Disclosure<span class="y">2023</span></div>
+      <div class="d">Stored XSS in the profile-image upload via content-type manipulation, reported to the Jellyfin security team with full PoC and a follow-up on an SVG-based bypass of the initial fix.</div>
+    </div>
+
+    <div class="item">
+      <div class="t"><a href="https://github.com/hrstn/c2birtengine">c2birtengine</a></div>
+      <div class="d">PoC for RCE in Eclipse BIRT via a malicious report upload, built into an HTTPS polling C2 channel.</div>
+    </div>
+
+    <div class="item">
+      <div class="t">AI toy &mdash; content-pipeline takeover</div>
+      <div class="d">Analysed the full chain behind a toy advertised as "100% safe content": recovered static client credentials, replayed its communication and injected attacker-controlled segments &mdash; the vendor's own pipeline then synthesised and delivered them. <a href="https://brightflare.io">brightflare.io</a></div>
+    </div>
+
+    <div class="item">
+      <div class="t">AI service provider &mdash; agent abuse to cluster foothold</div>
+      <div class="d">Deployed a Tailscale tunnel through the provider's AI coding agent and gained a root connection to a system controlling a pod of their deployment infrastructure.</div>
+    </div>
+  </section>
+
+  <div class="rule"><span>&#10022;</span></div>
+
+  <section>
+    <h2><span class="mk">//</span>Off the clock</h2>
+    <ul class="clock">
+      <li>Hacking</li>
+      <li>CTFs</li>
+      <li>Games</li>
+      <li>Combat sports</li>
+      <li>Gym</li>
+      <li>Books</li>
+    </ul>
+  </section>
+
+  <footer>&#10022; hrstn &#10022;</footer>
+
+</div>
+</body>
+</html>
