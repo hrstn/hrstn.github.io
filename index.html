@@ -5,10 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>hrstn</title>
 <meta name="description" content="hrstn — red teamer & offensive security engineer.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hrstn — Red Teamer & Offensive Security Engineer">
+<meta property="og:description" content="Builds C2 tooling, pokes at AI systems. Based in Austria.">
+<meta property="og:image" content="https://hrstn.github.io/og.png">
+<meta property="og:url" content="https://hrstn.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="hrstn — Red Teamer & Offensive Security Engineer">
+<meta name="twitter:description" content="Builds C2 tooling, pokes at AI systems. Based in Austria.">
+<meta name="twitter:image" content="https://hrstn.github.io/og.png">
+<!-- fonts self-hosted, see @font-face below -->
 <style>
+@font-face{font-family:'Cormorant Garamond';src:url('fonts/cormorant-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant Garamond';src:url('fonts/cormorant-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant Garamond';src:url('fonts/cormorant-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant Garamond';src:url('fonts/cormorant-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'JetBrains Mono';src:url('fonts/jbmono-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'JetBrains Mono';src:url('fonts/jbmono-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+
 :root{
   --bg:#09080a; --ink:#d8cfc9; --muted:#8a807c;
   --blood:#9a1b1b; --blood-bright:#c0392b; --brass:#b08d57; --line:#231c1f;
@@ -62,8 +78,15 @@ h2 .mk{color:var(--blood-bright);margin-right:7px;}
 .item .y{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blood);letter-spacing:0.1em;margin-left:6px;}
 .item .d{font-size:17px;color:var(--muted);line-height:1.5;}
 .item .d a{color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(176,141,87,0.35);}
+.contact{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--ink);}
+.contact a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;transition:color .15s,border-color .15s;}
+.contact a:hover{color:#fff;border-color:var(--blood-bright);}
+.contact .sep{color:var(--line);padding:0 10px;}
+.fpr{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:var(--muted);}
+.fpr span{color:#b7ada7;}
 .clock{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 10px;}
 .clock li{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--ink);border:1px solid var(--line);border-left:2px solid rgba(154,27,27,0.5);background:rgba(255,255,255,0.012);padding:5px 13px;border-radius:2px;}
+footer .privacy{margin-top:8px;font-size:10px;letter-spacing:0.18em;color:#3e3739;}
 footer{margin-top:50px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#4e4648;}
 @media (max-width:520px){body{font-size:18px;}h1{font-size:30px;}.wrap{padding:0 20px 64px;}.emblem{padding:40px 0 2px;}}
 </style>
@@ -117,7 +140,10 @@ footer{margin-top:50px;text-align:center;font-family:'JetBrains Mono',monospace;
       <a href="https://github.com/hrstn"><span class="arw">&rsaquo;</span>GitHub</a>
       <a href="https://www.linkedin.com/in/marcel-stering-8505ab240/"><span class="arw">&rsaquo;</span>LinkedIn</a>
       <a href="https://www.credential.net/profile/marcelstering22827"><span class="arw">&rsaquo;</span>Credly</a>
+      <a id="mail" href="#"><span class="arw">&rsaquo;</span>email</a>
+      <a href="pubkey.asc"><span class="arw">&rsaquo;</span>PGP key</a>
     </div>
+    <div class="fpr">FPR <span>A021 0CC6 E23A 52EB 45D0&nbsp; B22E A13D B1EA 29D1 9914</span></div>
   </section>
 
   <div class="rule"><span>&#10022;</span></div>
@@ -170,8 +196,18 @@ footer{margin-top:50px;text-align:center;font-family:'JetBrains Mono',monospace;
     </ul>
   </section>
 
-  <footer>&#10022; hrstn &#10022;</footer>
+  <footer>
+    <div>&#10022; hrstn &#10022;</div>
+    <div class="privacy">no cookies &middot; no tracking &middot; no analytics</div>
+  </footer>
 
 </div>
+<script>
+(function(){
+  var u="hrstn.sec", d="proton.me";
+  var a=document.getElementById("mail");
+  if(a){ a.href="mailto:"+u+"@"+d; a.textContent=u+"@"+d; }
+})();
+</script>
 </body>
 </html>
